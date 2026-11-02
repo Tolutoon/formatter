@@ -1,3 +1,11 @@
+// WHAT: Stateless building blocks — section title, result card,
+//   error message, plus DecimalFormatterWidget + TimeFormatterWidget sections.
+// WHERE: Used by lib/screens/formatter_screen.dart, which passes in
+//   controllers, onFormat callbacks, result + error strings.
+// WHY: Keeps reusable UI pieces in one place so the screen's build()
+//   stays short; result/error show conditionally (if != null), so the
+//   screen just passes state down and these widgets only display it.
+
 import 'package:flutter/material.dart';
 
 class FormatterSectionTitle extends StatelessWidget {

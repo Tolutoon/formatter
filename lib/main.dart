@@ -1,3 +1,9 @@
+// WHAT: App entry point — boots UtilityFormatterApp (MaterialApp).
+// WHERE: Launched by the platform via runApp(); sets home to
+//   FormatterScreen in lib/screens/formatter_screen.dart.
+// WHY: Single place for app-wide setup (Material3 theme, seed blue,
+//   scaffold background, debug banner off), so screens/widgets stay
+//   theme-free and only worry about their own UI.
 
 import 'package:flutter/material.dart';
 import 'screens/formatter_screen.dart';

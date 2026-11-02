@@ -1,3 +1,12 @@
+// WHAT: Stateful screen holding decimal + time inputs, results and errors;
+//   calls formatDecimal()/formatTime() when the buttons are pressed.
+// WHERE: Set as home in lib/main.dart; imports the helpers from
+//   lib/utils/formatter_utils.dart and the section widgets from
+//   lib/widgets/formatter_widgets.dart.
+// WHY: Owns the TextEditingControllers + try/catch on FormatException,
+//   so the utils stay pure/testable and the widgets stay stateless.
+//   dispose() frees the controllers to avoid leaks.
+
 import 'package:flutter/material.dart';
 import 'package:formatter/utils/formatter_utils.dart';
 import 'package:formatter/widgets/formatter_widgets.dart';

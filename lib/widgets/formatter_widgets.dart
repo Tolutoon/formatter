@@ -1,13 +1,8 @@
-// WHAT: Stateless building blocks — section title, result card,
-//   error message, plus DecimalFormatterWidget + TimeFormatterWidget sections.
-// WHERE: Used by lib/screens/formatter_screen.dart, which passes in
-//   controllers, onFormat callbacks, result + error strings.
-// WHY: Keeps reusable UI pieces in one place so the screen's build()
-//   stays short; result/error show conditionally (if != null), so the
-//   screen just passes state down and these widgets only display it.
-
 import 'package:flutter/material.dart';
 
+// WHAT: Bold 18px section heading text.
+// WHERE: Rendered at the top of DecimalFormatterWidget + TimeFormatterWidget in this file.
+// WHY: Single style for both section titles so the heading look stays consistent.
 class FormatterSectionTitle extends StatelessWidget {
   const FormatterSectionTitle(this.title, {super.key});
 
@@ -22,6 +17,9 @@ class FormatterSectionTitle extends StatelessWidget {
   }
 }
 
+// WHAT: Green rounded card showing a small grey title plus a large bold value.
+// WHERE: Shown conditionally below the button in the decimal/time widgets when result != null.
+// WHY: One shared success style so formatted decimal and time output look the same.
 class FormatterResultCard extends StatelessWidget {
   const FormatterResultCard({
     required this.title,
@@ -57,6 +55,9 @@ class FormatterResultCard extends StatelessWidget {
   }
 }
 
+// WHAT: Small red message text with top padding for validation errors.
+// WHERE: Shown conditionally below the button in the decimal/time widgets when error != null.
+// WHY: One shared error style so FormatException messages render identically in both sections.
 class FormatterErrorMessage extends StatelessWidget {
   const FormatterErrorMessage(this.message, {super.key});
 
@@ -74,6 +75,9 @@ class FormatterErrorMessage extends StatelessWidget {
   }
 }
 
+// WHAT: Decimal input section — number TextField + "Format Decimal" button + result/error below.
+// WHERE: Placed first in FormatterScreen's Column; receives decimalController and handleDecimalFormatting.
+// WHY: Groups decimal UI together so the screen owns state while this widget stays stateless display-only.
 class DecimalFormatterWidget extends StatelessWidget {
   const DecimalFormatterWidget({
     required this.controller,
@@ -125,6 +129,9 @@ class DecimalFormatterWidget extends StatelessWidget {
   }
 }
 
+// WHAT: Time input section — datetime TextField + "Format Time" button + result/error below.
+// WHERE: Placed second in FormatterScreen's Column; receives timeController and handleTimeFormatting.
+// WHY: Mirrors the decimal section for time so each format flow stays independent and stateless.
 class TimeFormatterWidget extends StatelessWidget {
   const TimeFormatterWidget({
     required this.controller,
